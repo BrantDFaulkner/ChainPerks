@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <%- include('partials/header.ejs') %>
+
+    <body>
+        <main>
+        <%- include('partials/navbar.ejs') %>
+      
+            <div class="px-5 py-5 my-5">
+
+            <% if(rewardToken != null){ %>
+                <h2 class="pb-2 border-bottom">Reward Token</h2>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Symbol</th>
+                        <th scope="col">Decimals</th>
+                        <th scope="col">Initial Supply</th>
+                        <th scope="col">Address</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td><%= rewardToken.name%></td>
+                        <td><%= rewardToken.symbol%></td>
+                        <td><%= rewardToken.decimals%></td>
+                        <td><%= rewardToken.initialSupply%></td>
+                        <td><%= rewardToken.address%></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            <% } else { %>
+                <h2 class="pb-2 border-bottom">Create Token</h2>
+                <form action="/createRewardToken" method="post">
+                    <div class="mb-3">
+                        <label for="inputTokenName" class="form-label">Token Name</label>
+                        <input name="tokenName" type="text" class="form-control" id="inputTokenName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputTokenSymbol" class="form-label">Token Symbol</label>
+                        <input name="tokenSymbol" type="text" class="form-control" id="inputTokenSymbol">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputTokenDecimals" class="form-label">Token Decimals</label>
+                        <input name="tokenDecimals" type="number" class="form-control" value="18" id="inputTokenSymbol">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputTokenInitialSupply" class="form-label">Token InitialSupply</label>
+                        <input name="tokenInitialSupply" type="number" class="form-control" value="1000000" id="inputTokenInitialSupply">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            <% } %>   
+        
+
+            
+      </div>
+
+        </main>
+
+    <%- include('partials/footer.ejs') %>
+    </body>
+</html>

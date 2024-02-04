@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <%- include('partials/header.ejs') %>
+
+  <body>
+    <main>
+      <%- include('partials/navbar.ejs') %>
+      
+      <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Chain Perks</h1>
+        <img class="d-block mx-auto mb-4" src="../public/img/coins.jpg" alt="" width="800" height="200">
+        <div class="col-lg-6 mx-auto">
+        <h4 class="mb-4">Chain Perks empowers small business to leverage the power of blockchain to tokenize their customer rewards program.</h4>
+        </div>
+      </div>
+
+      <div class="b-example-divider"></div>
+      
+      <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Get Started</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <div class="feature col">
+            <h3 class="fs-2">1) Connect Wallet</h3>
+            <p>Connect your crypto wallet! This wallet will have administrattive control over your rewards program.</p>
+            
+          <% if(wallet != null){ %>
+            <button class="btn btn-success">Connected</button>
+          <% } else{ %>
+            <form action="/connect" method="post">
+              <button class="btn btn-primary">Connect Now</button>
+            </form>
+          <% } %>
+          </div>
+          <div class="feature col">
+            <h3 class="fs-2">2) Create a Reward Token</h3>
+            <p>Create a custom crypto token to reward your customers.</p>
+            <a href="/rewardToken">
+              <button type="button" class="btn btn-primary">Create Token</button>
+            </a>
+          </div>
+          <div class="feature col">
+            <h3 class="fs-2">3) Create Payment Service</h3>
+            <p>Receive payments in crypto and automatically reward your customers with your custom token.</p>
+            <a href="/paymentService">
+              <button type="button" class="btn btn-primary">Create Paymment Service</button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <%- include('partials/footer.ejs') %>
+
+
+  </body>
+</html>
